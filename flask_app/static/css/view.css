@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+#header a{
+    color: #E3F2FD;
+}
+body{
+    background-color: #4F5D75;
+}
+#header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #4F5D75;
+    color:#E3F2FD;
+    height: 7vh;
+}
+#container{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #E3F2FD;
+    height: 100vh;
+    border-radius: 15px;
+}
+.upper{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lower{
+    display: flex;
+
+}
+.info{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vh;
+}
+.skeptics{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

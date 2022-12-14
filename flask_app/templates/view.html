@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Sasquatch Hunting</h1>
+        <div id="a-holder">
+            <h3>{{userData.first_name}} {{userData.last_name}}</h3>
+            <a href="/logout">Logout</a>
+            <a href="/dashboard"> dashboard</a>
+        </div>
+    </div>
+    <div id="container">
+        <div class="upper">
+       <h1>{{sightingData.location}} on {{sightingData.date}}</h1>
+        </div>
+        <div class="lower">
+            <div class="info">
+                <h2>What Happened</h2>
+                <p>{{sightingData.description}}</p>
+                <p># of Squatches {{sightingData.num}}</p>
+                <p>Reported By: {{sightingData.name}}</p>
+            </div>
+            <div class="skeptics">
+                <h3>Skeptics</h3>
+                <div>
+                {% for skeptic in skepticData%}
+                    <p>{{skeptic.first_name}} {{skeptic.last_name}}</p>
+                {% endfor%}
+                </div>
+                
+                {% set ns = namespace(found=False)%}
+                {% for skeptic in skepticData%}
+                    {%if skeptic.id == session['id']%}
+                        {% set ns.found = True%}
+                    {%endif%}
+                {% endfor %}
+                
+                    {% if ns.found == True %}
+                    <a href="/dislike/{{sightingData.id}}">Believe It</a>
+                    {% else %}
+                    <a href="/like/create/{{sightingData.id}}">I'm Skeptical</a>
+                    {% endif %}
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color: #E3F2FD;
+}
+body{
+    background-color: #E3F2FD;
+}
+#header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #4F5D75;
+    color:#E3F2FD;
+    height: 7vh;
+    border-bottom: solid #E3F2FD 2px;
+    border-radius: 10px;
+}
+#a-holder > a{
+    margin: 15px;
+    font-size: 1.25em;
+}
+#container{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    gap:10px;
+}
+.item{
+    height: 100px;
+    border: solid black 2px;
+    background-color: #4F5D75;
+    color: #E3F2FD;
+    display: flex;
+}
+.skeptics{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 10%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+.info > div{
+    height: 50%;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.actions{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

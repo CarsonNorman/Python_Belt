@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="form-holder">
+    <form id='login' action="/validateLog" method="post" >
+            {% with messages = get_flashed_messages(category_filter=['login'])%}
+                {% if messages%}
+                    {% for message in messages%}
+                     <p style="color:red; font-size:1em;">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <label for="login">Login</label>
+        
+        <input type='email' placeholder="Email" name="email"class="form-control">
+        <input  type='password' placeholder="password" name="pass"class="form-control">
+        <input type="submit"class="form-control">
+    </form>
+    <form id="create" action="/validateCreate" method="post">
+            {% with messages = get_flashed_messages(category_filter=['create'])%}
+                {% if messages%}
+                    {% for message in messages%}
+                     <p style="color:red; font-size:1em;">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <label for="create">Create</label> 
+        <input type='email' placeholder="Email" name="email"class="form-control">
+        <input placeholder="First Name" name="first_name"class="form-control">
+        <input placeholder="Last Name" name="last_name"class="form-control">
+        <input placeholder="password" type='password' name="pass"class="form-control">
+        <input placeholder="Confirm Password" type='password' name="pass-confirm"class="form-control">
+        <input type="submit"class="form-control">
+    </form>
+    </div>
+    
+</body>
+</html>

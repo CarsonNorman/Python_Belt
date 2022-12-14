@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Welcome {{userData.first_name}} {{userData.last_name}}</h1>
+        <div id="a-holder">
+            <a href="/logout">Logout</a>
+            <a href="item/create">Report Sighting</a>
+        </div>
+    </div>
+    <div id="container">
+        {% if itemsData|length == 0%}
+            <p>No items</p>
+        {% else %}
+            {% for item in itemsData%}
+            <div class="item">
+                <div class="skeptics">Skeptics<span>{{item.scrutinyData|length}}</span></div>
+                <div class="info">
+                    <div class="top"><p>{{item.location}} </p> <p> {{item.date}}</p></div>
+                    <div class="bottom">Reported by: {{item.name}}</div>
+                </div>
+                <div class="actions">
+                {% if userData.id == item.user_id%}
+                    <a href="/item/delete/{{item.id}}">Delete</a>
+                    <a href="/item/edit/{{item.id}}">Edit</a>
+                {% else %}
+                    <a href="/item/view/{{item.id}}"> View</a>
+                {% endif %}
+                </div>
+                
+                
+                <!-- {% set ns = namespace(found=False)%}
+                {% for like in item.scrutinyData%}
+                    {%if like.users_id == session['id']%}
+                        {% set ns.found = True%}
+                    {%endif%}
+                {% endfor %}
+                {% if ns.found == False %}
+                <a href="/like/create/{{item.id}}">Like Item</a>
+                {% else %}
+                <a href="/dislike/{{item.id}}">Dislike</a>
+                {%endif%} -->
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
